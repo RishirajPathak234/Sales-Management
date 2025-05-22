@@ -1208,6 +1208,7 @@ import PersonAddOutlinedIcon from "@mui/icons-material/PersonAddOutlined"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 import { Area, AreaChart, PieChart, Pie, Cell } from "recharts"
 
+
 // StatBox Component Definition
 const StatBox = ({ title, subtitle, icon, increase }) => {
   const theme = useTheme()
@@ -1496,7 +1497,7 @@ const Dashboard = () => {
       </Box>
 
       {/* THIRD ROW: CUSTOMER FULFILLMENT AND EARNINGS */}
-      <Box display="flex" gap="20px" mb="20px">
+      <Box display="flex" gap="20px" mb="10px">
         {/* Customer Fulfillment Section */}
         <Box
           sx={{
@@ -1519,14 +1520,16 @@ const Dashboard = () => {
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart
                 data={[
-                  { name: "Jan", thisMonth: 65, lastMonth: 40 },
-                  { name: "Feb", thisMonth: 30, lastMonth: 45 },
-                  { name: "Mar", thisMonth: 100, lastMonth: 60 },
-                  { name: "Apr", thisMonth: 70, lastMonth: 55 },
-                  { name: "May", thisMonth: 85, lastMonth: 65 },
-                  { name: "Jun", thisMonth: 90, lastMonth: 70 },
+                  { name: "Sun", thisMonth: 615, lastMonth: 512 },  //
+                  { name: "Mon", thisMonth: 550, lastMonth: 350 },
+                  { name: "Tues", thisMonth: 795, lastMonth: 221 },//
+                  { name: "Wed", thisMonth: 960, lastMonth: 784 }, //
+                  { name: "Thurs", thisMonth: 750, lastMonth: 605 },
+                  { name: "Fri", thisMonth: 595, lastMonth: 731 },
+                  { name: "Sat", thisMonth: 660, lastMonth: 272 }, //
+                  { name: "Sun", thisMonth: 615, lastMonth: 512 }, //
                 ]}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                margin={{ top: 5, right: 30, left: 20, bottom: 1 }}
               >
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#333333" />
                 <XAxis dataKey="name" stroke="#9e9e9e" />
@@ -1541,25 +1544,25 @@ const Dashboard = () => {
                 />
                 <defs>
                   <linearGradient id="colorThisMonth" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                    <stop offset="5%" stopColor="#98FF98" stopOpacity={0.8} />
                     <stop offset="95%" stopColor="#8884d8" stopOpacity={0.2} />
                   </linearGradient>
                   <linearGradient id="colorLastMonth" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-                    <stop offset="95%" stopColor="#82ca9d" stopOpacity={0.2} />
+                    <stop offset="5%" stopColor="#FFC0CB" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#FFC0CB" stopOpacity={0.2} />
                   </linearGradient>
                 </defs>
                 <Area
                   type="monotone"
                   dataKey="thisMonth"
-                  stroke="#8884d8"
+                  stroke="#ffffff"
                   fillOpacity={1}
                   fill="url(#colorThisMonth)"
                 />
                 <Area
                   type="monotone"
                   dataKey="lastMonth"
-                  stroke="#82ca9d"
+                  stroke="#ffffff"
                   fillOpacity={1}
                   fill="url(#colorLastMonth)"
                 />
@@ -1569,24 +1572,28 @@ const Dashboard = () => {
 
           {/* Legend */}
           <Box display="flex" justifyContent="space-between" mt="20px">
-            <Box display="flex" alignItems="center">
-              <Box width="12px" height="12px" borderRadius="50%" bgcolor="#8884d8" mr="8px" />
-              <Typography color={colors.grey[100]}>This Month</Typography>
-              <Typography color={colors.grey[100]} ml="10px" fontWeight="bold">
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <Box display="flex" alignItems="center">
+                <Box width="12px" height="12px" borderRadius="50%" bgcolor="#8884d8" mr="8px" />
+                <Typography color={colors.grey[100]}>This Month</Typography>
+              </Box>
+              <Typography color={colors.grey[100]} mt="4px" fontSize="14px">
                 $4,785
               </Typography>
             </Box>
-            <Box display="flex" alignItems="center">
-              <Box width="12px" height="12px" borderRadius="50%" bgcolor="#82ca9d" mr="8px" />
-              <Typography color={colors.grey[100]}>Last Month</Typography>
-              <Typography color={colors.grey[100]} ml="10px" fontWeight="bold">
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <Box display="flex" alignItems="center">
+                <Box width="12px" height="12px" borderRadius="50%" bgcolor="#82ca9d" mr="8px" />
+                <Typography color={colors.grey[100]}>Last Month</Typography>
+              </Box>
+              <Typography color={colors.grey[100]} mt="4px" fontSize="14px">
                 $4,029
               </Typography>
             </Box>
           </Box>
-        </Box>
+          </Box>
 
-        {/* Earnings Section */}
+          {/* Earnings Section */}
         <Box
           sx={{
             backgroundColor: "#181818",
@@ -1613,8 +1620,8 @@ const Dashboard = () => {
           </Typography>
 
           {/* Gauge Chart */}
-          <Box display="flex" justifyContent="center" height="200px">
-            <ResponsiveContainer width="80%" height="100%">
+          <Box display="flex" justifyContent="center" height="250px" width="100%">
+            <ResponsiveContainer width="100%" height="150%">
               <PieChart>
                 <Pie
                   data={[
@@ -1625,21 +1632,21 @@ const Dashboard = () => {
                   cy="50%"
                   startAngle={180}
                   endAngle={0}
-                  innerRadius={60}
-                  outerRadius={100}
-                  paddingAngle={0}
+                  innerRadius={100}
+                  outerRadius={160}
+                  paddingAngle={3}
                   dataKey="value"
                 >
                   <Cell fill="#4ECCA3" />
-                  <Cell fill="#181818" />
+                  <Cell fill="gray" />
                 </Pie>
                 <text
                   x="50%"
-                  y="50%"
+                  y="47%"
                   textAnchor="middle"
                   dominantBaseline="middle"
                   fill="#ffffff"
-                  fontSize="48px"
+                  fontSize="64px"
                   fontWeight="bold"
                 >
                   80%

@@ -4,20 +4,16 @@ import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
-import AddHomeRoundedIcon from '@mui/icons-material/AddHomeRounded';
-import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
-import StarRoundedIcon from '@mui/icons-material/StarRounded';
-import LeaderboardOutlinedIcon from '@mui/icons-material/LeaderboardOutlined';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
-import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
-import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded';
-import { Star } from "@mui/icons-material";
+import AddHomeRoundedIcon from "@mui/icons-material/AddHomeRounded";
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import StarRoundedIcon from "@mui/icons-material/StarRounded";
+import LeaderboardOutlinedIcon from "@mui/icons-material/LeaderboardOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
+import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+
+import MenuOpenRoundedIcon from "@mui/icons-material/MenuOpenRounded";
 
 const Item = ({ title, to, icon, selected, setSelected, sx }) => {
   const theme = useTheme();
@@ -27,7 +23,7 @@ const Item = ({ title, to, icon, selected, setSelected, sx }) => {
       active={selected === title}
       style={{
         color: colors.grey[100],
-        ...(sx || {gap: "1.5px", padding: "15px"}),
+        ...(sx || { gap: "1.5px", padding: "15px" }),
       }}
       onClick={() => setSelected(title)}
       icon={icon}
@@ -52,7 +48,7 @@ const Sidebar = () => {
           width: isCollapsed ? "100px" : "300px !important",
           minWidth: isCollapsed ? "100px" : "300px !important",
           maxWidth: isCollapsed ? "100px" : "300px !important",
-         transition: "width 0.3s",
+          transition: "width 0.3s",
         },
         "& .pro-sidebar": {
           width: isCollapsed ? "100px" : "300px !important",
@@ -92,7 +88,7 @@ const Sidebar = () => {
           borderRadius: "15px",
           padding: "5px 18px 5px 12px !important",
           backgroundColor: "#CFF7EF !important",
-          width: "90%", 
+          width: "90%",
           marginLeft: "auto",
           marginRight: "auto",
         },
@@ -100,50 +96,116 @@ const Sidebar = () => {
     >
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
-          {/* LOGO AND MENU ICON */}
-          <MenuItem
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={
-              isCollapsed ? (
-                <MenuOpenRoundedIcon sx={{ fontSize: 40, ml: 4 }} />
-              ) : undefined
-            }
-            style={{
-              margin: "16px 0 28px 0",
-              color: colors.grey[200],
-              fontSize: "1.4rem",
-              minHeight: "80px",
-              pointerEvents: "auto",
-              backgroundColor: "transparent !important",
-            }}
-            className="sidebar-logo-menuitem"
-          >
-            {!isCollapsed && (
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-                ml="15px"
-                sx={{
-                  fontSize: 38,
-                  borderRadius: 15,
-                  backgroundColor: "transparent",
-                  padding: "5px 25px 5px 15px !important",
+          {/*  LOGO AND MENU ICON */}
+                <MenuItem
+                onClick={() => setIsCollapsed(!isCollapsed)}
+                icon={
+                  isCollapsed ? (
+                  // Show logo icon when collapsed
+                  <img
+                    src="./assets/logo.ico"
+                    alt="company logo"
+                    style={{
+                    width: 100,
+                    height: 100,
+                    objectFit: "contain",
+                    display: "block",
+                    marginLeft: 35,
+                    marginTop: 20,
+                    }}
+                  />
+                  ) : undefined
+                }
+                style={{
+                  margin: "16px 0 28px 0",
+                  color: colors.grey[200],
+                  fontSize: "1.4rem",
+                  minHeight: "80px",
+                  pointerEvents: "auto",
+                  backgroundColor: "transparent !important",
                 }}
-              >
+                className="sidebar-logo-menuitem"
+                >
+                {!isCollapsed && (
+                  <Box
+                  display="flex"
+                  alignItems="center"
+                  ml="0"
+                  sx={{
+                    backgroundColor: "transparent",
+                    padding: "5px 20px 5px 0px !important",
+                    width: "100%",
+                    minHeight: "60px",
+                  }}
+                  >
+                  <Box
+                    sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    height: 48,
+                    width: 48,
+                    minWidth: 48,
+                    minHeight: 48,
+                    mr: 2,
+                    ml: 0, // stick logo to left
+                  }}
+                >
+                  <img
+                    src="./assets/logo.ico"
+                    alt="company logo"
+                    style={{
+                      width: 100,
+                      height: 100,
+                      objectFit: "contain",
+                      display: "block",
+                      marginLeft: -10,
+                      marginBottom: 20,
+                      left: "0",
+                      marginTop: "22px",
+                    
+                    }}
+                  />
+                </Box>
                 <Typography
                   variant="h3"
-                  fontWeight="bolder"
-                  color={colors.grey[100]}
-                  fontSize="1.4rem"
-                  mt="-20px"
-                  padding="2px 15px 0 5px !important"
+                  lineHeight={1}
+                  sx={{
+                    padding: "0 10px",
+                    whiteSpace: "nowrap",
+                    background: "",
+                  }}
                 >
-                  Sales <br /> Management
+                  <span
+                    style={{
+                      background:
+                        "linear-gradient(90deg,rgb(255, 236, 68) 0%,rgb(176, 150, 0) 100%)",
+                      WebkitBackgroundClip: "text",
+                      backgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      textFillColor: "transparent",
+                      fontSize: "2rem",
+                      fontWeight: 700,
+                    }}
+                  >
+                    Sales
+                  </span>{" "}
+                  <br />
+                  <span
+                    style={{
+                      color: "#fff",
+                      fontSize: "0.8rem",
+                      fontWeight: 400,
+                      letterSpacing: "0em",
+                    }}
+                  >
+                    M A N A G E M E N T
+                  </span>
                 </Typography>
-                <Box sx={{ width: "10px" }} /> {/* Add gap between text and button */}
+                <Box sx={{ flexGrow: 1 }} />
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
-                  <MenuOpenRoundedIcon sx={{ fontSize: 38, borderRadius: 15 }} />
+                  <MenuOpenRoundedIcon
+                    sx={{ fontSize: 38, borderRadius: 15 }}
+                  />
                 </IconButton>
               </Box>
             )}
